@@ -4,7 +4,7 @@ This Maven Plugin can be used to pack .SPK-Files from runnable JARs to neatly de
 
 Prerequisites
 --------
-1. A Synology Diskstation with a JRE installed (via the "Java Manager" Package). Note that the current DSM V 5.2 can only run Java 7 - so restrain from fancy lambda stuff.
+1. A Synology Diskstation with a JRE installed (via the "Java Manager" Package). Note that the DSM V 6.0 has Java 8 - restrain from fancy lambda stuff if you want to deploy to earlier DSMs.
 2. Maven 2 or later on your dev-box.
 3. Some Java app you want to deploy, which you have Maven-controlled sources for.
 
@@ -12,9 +12,9 @@ Install
 --------
 //TODO: put to some repo, when project is a bit more mature...
 
-    > curl "https://codeload.github.com/lost-carrier/spk-packager-plugin/zip/v0.1.0" -o spk-packager-plugin-0.1.0.zip
-    > unzip spk-packager-plugin-0.1.0.zip
-    > cd spk-packager-plugin-0.1.0
+    > curl "https://codeload.github.com/lost-carrier/spk-packager-plugin/zip/v0.1.1" -o spk-packager-plugin-0.1.0.zip
+    > unzip spk-packager-plugin-0.1.1.zip
+    > cd spk-packager-plugin-0.1.1
 ...and...
 
     > mvn clean install
@@ -28,7 +28,7 @@ Add the plugin to your pom.xml:
 	  <plugin>
 		<groupId>com.losty.maven.synology</groupId>
 		<artifactId>spk-packager</artifactId>
-		<version>0.1.0</version>
+		<version>0.1.1</version>
 	  </plugin>
     </plugins>
 ...and compile your project like this:
@@ -38,7 +38,7 @@ Add the plugin to your pom.xml:
 You will see something like this, when everything went fine:
 
     [...]
-    [INFO] --- spk-packager:0.1.0:package (default-cli) @ my-project ---
+    [INFO] --- spk-packager:0.1.1:package (default-cli) @ my-project ---
     [INFO] Successfully packed /path/to/workspace/my-project/target/my-project-1.0.0.spk
     [INFO] ------------------------------------------------------------------------
     [INFO] BUILD SUCCESS
@@ -51,7 +51,7 @@ What else?
 There's a lot of stuff that can be configured for a SPK-File.
 
 	<configuration>
-		<goalPrefix>spk</goalPrefix>    <!-- Maven thingy -->
+		<java>/var/packages/Java8/target/j2sdk-image/bin/java</java>    <!-- Where to find Java on target box -->
 		<jvmArgs>-Dserver.port=7071</jvmArgs>    <!-- Arguments to be passed to the JVM -->
 		<progArgs>--logging.config=./logback.xml</progArgs>    <!-- Arguments to your App -->
 		<distributor>me</distributor>    <!-- just meta stuff -->

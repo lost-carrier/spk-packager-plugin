@@ -25,6 +25,9 @@ public class SpkPackager extends AbstractMojo {
 	@Parameter(property = "project.build.directory")
 	private File outputDir;
 
+	@Parameter(defaultValue = "/var/packages/Java8/target/j2sdk-image/bin/java")
+	private String java;
+
 	@Parameter(defaultValue = " ")
 	private String jvmArgs;
 
@@ -52,7 +55,7 @@ public class SpkPackager extends AbstractMojo {
 	@Parameter(defaultValue = " ")
 	private String minDsmVersion;
 
-	@Parameter(defaultValue = "java>=1.6.0.27-1")
+	@Parameter(defaultValue = " ")
 	private String installDepPackages;
 
 	@Parameter(defaultValue = "no")
@@ -141,6 +144,7 @@ public class SpkPackager extends AbstractMojo {
 		String str = readToString(tpl.getTemplate("scripts/start-stop-status"));
 		str = str.replace("##artifactId##", mavenProject.getArtifactId());
 		str = str.replace("##name##", mavenProject.getName());
+		str = str.replace("##java##", java);
 		str = str.replace("##jvmArgs##", jvmArgs);
 		str = str.replace("##progArgs##", progArgs);
 		return str;	

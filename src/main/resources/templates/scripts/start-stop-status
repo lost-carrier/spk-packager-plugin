@@ -5,7 +5,7 @@ PACKAGE="##artifactId##"
 DNAME="##name##"
 
 # Others
-JAVA="/var/packages/JavaManager/target/Java/bin/java"
+JAVA="##java##"
 INSTALL_DIR="/usr/local/${PACKAGE}"
 PATH="${INSTALL_DIR}/bin:${PATH}"
 PID_FILE="${INSTALL_DIR}/var/${PACKAGE}.pid"
