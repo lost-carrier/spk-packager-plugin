@@ -4,8 +4,8 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 
+import org.apache.commons.compress.utils.Charsets;
 import org.apache.commons.compress.utils.IOUtils;
 
 public class EnhancedTarGz {
@@ -20,8 +20,9 @@ public class EnhancedTarGz {
 		return addTextFile(filename, content, null);
 	}
 
+	@SuppressWarnings("deprecation") // ...cause whole Java 6 is deprecated!!!
 	public long addTextFile(String filename, String content, Integer mode) throws IOException {
-		byte[] bytes = content.getBytes(StandardCharsets.UTF_8);
+		byte[] bytes = content.getBytes(Charsets.UTF_8);
 		return tarGz.putFile(new ByteArrayInputStream(bytes), filename, bytes.length, mode);
 	}
 
