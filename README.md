@@ -12,9 +12,9 @@ Install
 --------
 //TODO: put to some repo, when project is a bit more mature...
 
-    > curl "https://codeload.github.com/lost-carrier/spk-packager-plugin/zip/v0.1.1" -o spk-packager-plugin-0.1.0.zip
-    > unzip spk-packager-plugin-0.1.1.zip
-    > cd spk-packager-plugin-0.1.1
+    > curl "https://codeload.github.com/lost-carrier/spk-packager-plugin/zip/v0.1.2" -o spk-packager-plugin-0.1.2.zip
+    > unzip spk-packager-plugin-0.1.2.zip
+    > cd spk-packager-plugin-0.1.2
 ...and...
 
     > mvn clean install
@@ -28,7 +28,7 @@ Add the plugin to your pom.xml:
 	  <plugin>
 		<groupId>com.losty.maven.synology</groupId>
 		<artifactId>spk-packager</artifactId>
-		<version>0.1.1</version>
+		<version>0.1.2</version>
 	  </plugin>
     </plugins>
 ...and compile your project like this:
@@ -38,7 +38,7 @@ Add the plugin to your pom.xml:
 You will see something like this, when everything went fine:
 
     [...]
-    [INFO] --- spk-packager:0.1.1:package (default-cli) @ my-project ---
+    [INFO] --- spk-packager:0.1.2:package (default-cli) @ my-project ---
     [INFO] Successfully packed /path/to/workspace/my-project/target/my-project-1.0.0.spk
     [INFO] ------------------------------------------------------------------------
     [INFO] BUILD SUCCESS
